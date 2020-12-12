@@ -1,3 +1,4 @@
+import random
 rock = '''
     _______
 ---'   ____)
@@ -24,46 +25,25 @@ scissors = '''
       (____)
 ---.__(___)
 '''
-import random
-user_choise = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors. \n")) 
-# print(type(user_choose))
-computer_choise = random.randint(0, 2)
-if computer_choise == 0:
-  final_computer_choise = rock
-elif computer_choise == 1:
-  final_computer_choise = paper
-elif computer_choise == 2:
-  final_computer_choise = scissors
+game_images = [rock, paper, scissors]
+user_choice = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors. \n"))
+if user_choice >= 3 or user_choice < 0:
+  print("Invalid number!")
+else:    
+  print(game_images[user_choice])
 
-if user_choise == 0:
-  final_user_choise = rock
-  if final_computer_choise == paper:
-    result = "You lose"
-  elif final_computer_choise == scissors:
-    result = "You Win"
-  else:
-    result = "Draw" 
-elif user_choise == 1:
-  final_user_choise = paper
-  if final_computer_choise == paper:
-    result = "Draw"
-  elif final_computer_choise == scissors:
-    result = "You lose"
-  else:
-    result = "You Win"
-elif user_choise == 2:
-  final_user_choise = scissors
-  if final_computer_choise == paper:
-    result = "You Win"
-  elif final_computer_choise == scissors:
-    result = "Draw"
-  else:
-    result = "You lose"
-else:
-  print("Wrong number!!!")
+computer_choice = random.randint(0, 2)
+print("Computer chose: ")
+print(game_images[computer_choice])
 
-
-print(final_user_choise)
-print("Computer chose:")
-print(final_computer_choise)
-print(result)      
+if user_choice == 0 and computer_choice == 2:
+  print("You Win!")
+elif computer_choice == 0 and user_choice == 2:
+  print("You lose!")  
+elif computer_choice > user_choice:
+  print("You lose!")
+elif user_choice > computer_choice:
+  print("You Win!")  
+elif computer_choice == user_choice:
+  print("It`s a draw")
+ 
